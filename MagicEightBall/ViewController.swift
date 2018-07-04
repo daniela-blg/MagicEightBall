@@ -8,18 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
+    @IBOutlet var myLabel: UILabel!
+    @IBOutlet var myTextField: UITextField!
+    
+    @IBAction func didPressMyButton(_ sender: Any) {
+        myLabel.text = myTextField.text
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
-
