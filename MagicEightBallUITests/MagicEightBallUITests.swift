@@ -28,9 +28,23 @@ class MagicEightBallUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testTextFieldChangesLabelText() {
+        let app = XCUIApplication()
+        
+        let myString = "My first iOS UI test"
+        
+        let textField = app.textFields["myTextField"]
+        XCTAssertTrue(textField.exists)
+        
+        let myLabel = app.staticTexts["myLabel"]
+        XCTAssertTrue(myLabel.exists)
+        
+        textField.tap()
+        textField.typeText(myString)
+        
+        app.buttons["myButton"].tap()
+        
+        XCTAssertEqual(myLabel.label, myString)
     }
     
 }
