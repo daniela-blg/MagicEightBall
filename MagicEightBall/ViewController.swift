@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox.AudioServices
 
 let possibleMagic8Answers =
     ["It is certain.",
@@ -42,11 +43,16 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         
         guard let text = myTextField.text, !text.isEmpty else {
             myLabel.text = "I can't answer what I don't know."
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             return
         }
         
